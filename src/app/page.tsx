@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { FaGithub, FaLinkedin, FaEnvelope, FaChevronDown, FaArrowLeft, FaExpand, FaTimes, FaPlay, FaPause, FaCompress } from "react-icons/fa";
+import { MotionDiv, MotionP, MotionH1, MotionA, MotionButton } from "./Motion";
+import { FaChevronDown, FaGithub, FaLinkedin, FaEnvelope, FaArrowLeft, FaExpand, FaTimes, FaPlay, FaPause, FaCompress } from "./ReactIconsFa";
 
 type Project = {
   id: number;
@@ -280,7 +280,7 @@ export default function Home() {
         style={{ height: '100vh' }}
       >
         {pageLoading && (
-          <motion.div
+          <MotionDiv
             className="fixed inset-0 z-50 bg-[#010003] flex items-center justify-center loader-container"
             initial={{ opacity: 1 }}
             animate={{ opacity: 0 }}
@@ -294,32 +294,32 @@ export default function Home() {
             }}
           >
             <div className="relative flex flex-col items-center">
-              <motion.div
+              <MotionH1
                 className="text-[#E4F5E5] text-6xl font-['Bold'] logo-reveal"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
               >
                 T.C.
-              </motion.div>
-              <motion.div
+              </MotionH1>
+              <MotionP
                 className="mt-8 h-0.5 bg-[#E4F5E5]/20"
                 initial={{ width: 0 }}
                 animate={{ width: "100px" }}
                 transition={{ duration: 1, ease: "easeInOut" }}
               />
-              <motion.p
+              <MotionP
                 className="mt-4 text-[#E4F5E5]/60 text-sm font-['Area_Normal_Regular']"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
                 Portfolio
-              </motion.p>
+              </MotionP>
             </div>
-          </motion.div>
+          </MotionDiv>
         )}
-        <motion.div
+        <MotionDiv
           animate={{ x: selectedId ? "-100%" : 0 }}
           transition={{ duration: 0.5 }}
           className="overflow-y-auto h-full"
@@ -360,10 +360,10 @@ export default function Home() {
               </video>
             </div>
 
-            <motion.div
+            <MotionDiv
               className="text-center space-y-16 sticky top-1/2 -translate-y-1/2"
             >
-              <motion.h1
+              <MotionH1
                 data-scroll
                 data-scroll-speed="0.1"
                 initial={{ opacity: 0, y: 50 }}
@@ -373,9 +373,9 @@ export default function Home() {
                 className="text-4xl md:text-9xl font-['Area_Normal_ExtraBold'] tracking-tighter text-[#E4F5E5]"
               >
                 Tanguy Clochard
-              </motion.h1>
+              </MotionH1>
 
-              <motion.p
+              <MotionP
                 data-scroll
                 data-scroll-speed="0.05"
                 initial={{ opacity: 0, y: 30 }}
@@ -385,12 +385,12 @@ export default function Home() {
                 className="text-base md:text-xl font-['Area_Normal_ExtraBold'] text-[#E4F5E5] max-w-2xl mx-auto text-center px-4"
               >
                 Concepteur développeur d&apos;applications
-              </motion.p>
+              </MotionP>
               <div
                 onClick={handleScrollToProjects}
                 className="absolute top-[40vh] left-1/2 -translate-x-1/2 cursor-pointer z-50"
               >
-                <motion.div
+                <MotionDiv
                   initial={{ opacity: 0, scale: 2, y: 20 }}
                   animate={{
                     opacity: showArrow ? 1 : 0,
@@ -412,9 +412,9 @@ export default function Home() {
                   <span className="hover:text-white transition-colors duration-300 cursor-pointer">
                     <FaChevronDown size={24} color="currentColor" />
                   </span>
-                </motion.div>
+                </MotionDiv>
               </div>
-            </motion.div>
+            </MotionDiv>
           </section>
 
           <section
@@ -433,7 +433,7 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#010003] via-transparent to-[#010003]" />
             <section>
-              <motion.div
+              <MotionDiv
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 1 }}
@@ -442,8 +442,8 @@ export default function Home() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <h2 className="text-5xl font-['Area_Normal_ExtraBold'] text-[#E4F5E5]">Projet</h2>
                 </div>
-              </motion.div>
-              <motion.div
+              </MotionDiv>
+              <MotionDiv
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 1 }}
@@ -451,7 +451,7 @@ export default function Home() {
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                   {projects.map((project) => (
-                    <motion.div
+                    <MotionDiv
                       key={project.id}
                       layoutId={`project-${project.id}`}
                       onClick={() => setSelectedId(project.id)}
@@ -476,13 +476,13 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                    </motion.div>
+                    </MotionDiv>
                   ))}
                 </div>
-              </motion.div>
+              </MotionDiv>
             </section>
             <section data-scroll data-scroll-speed="0.1" className="py-9 px-4">
-              <motion.div
+              <MotionDiv
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 1 }}
@@ -490,36 +490,36 @@ export default function Home() {
               >
                 <h2 className="text-3xl font-[Area_Normal_ExtraBold] mb-8 text-[#E4F5E5]">Contact</h2>
                 <div className="flex justify-center space-x-8 text-[#E4F5E5]">
-                  <motion.a
+                  <MotionA
                     href="https://github.com/votre-github"
                     whileHover={{ scale: 1.2 }}
                     className="text-2xl cursor-pointer relative z-20"
                   >
                     <FaGithub />
-                  </motion.a>
-                  <motion.a
+                  </MotionA>
+                  <MotionA
                     href="https://www.linkedin.com/in/tanguy-clochard-a32b5a203/"
                     whileHover={{ scale: 1.2 }}
                     className="text-2xl cursor-pointer relative z-20"
                     target="_blank"
                   >
                     <FaLinkedin />
-                  </motion.a>
-                  <motion.a
+                  </MotionA>
+                  <MotionA
                     href="mailto:tanguyclochardmail@gmail.com"
                     whileHover={{ scale: 1.2 }}
                     className="text-2xl cursor-pointer relative z-20"
                   >
                     <FaEnvelope />
-                  </motion.a>
+                  </MotionA>
                 </div>
-              </motion.div>
+              </MotionDiv>
             </section>
           </section>
-        </motion.div>
+        </MotionDiv>
 
         {/* Page de détail du projet */}
-        <motion.div
+        <MotionDiv
           initial={{ x: "100%" }}
           animate={{ x: selectedId ? 0 : "100%" }}
           transition={{ duration: 0.5 }}
@@ -542,20 +542,20 @@ export default function Home() {
 
               <div className="relative z-10 flex-grow">
                 {/* Bouton retour */}
-                <motion.button
+                <MotionButton
                   onClick={() => setSelectedId(null)}
                   className="fixed top-8 left-8 text-[#E4F5E5] hover:text-white transition-colors z-10"
                   whileHover={{ scale: 1.1 }}
                 >
                   <FaArrowLeft size={24} />
-                </motion.button>
+                </MotionButton>
 
                 {/* Contenu principal */}
                 <div className="flex-grow">
                   {projects.map((project) => {
                     if (project.id === selectedId) {
                       return (
-                        <motion.div
+                        <MotionDiv
                           key={project.id}
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
@@ -609,7 +609,7 @@ export default function Home() {
                                 className="cursor-pointer group bg-[#010003] px-6 -mt-[1px]"
                                 onClick={() => setShowDetails(!showDetails)}
                               >
-                                <motion.div
+                                <MotionDiv
                                   animate={{ rotate: showDetails ? 180 : 0 }}
                                   transition={{ duration: 0.3 }}
                                   className="group-hover:translate-y-1 transition-transform duration-300"
@@ -627,13 +627,13 @@ export default function Home() {
                                       <line x1="12" y1="16" x2="20" y2="8" strokeLinecap="round" />
                                     </svg>
                                   </div>
-                                </motion.div>
+                                </MotionDiv>
                               </div>
                             </div>
                           </div>
 
                           {/* Contenu détaillé avec animation */}
-                          <motion.div
+                          <MotionDiv
                             initial={{ height: 0, opacity: 0 }}
                             animate={{
                               height: showDetails ? "auto" : 0,
@@ -669,7 +669,7 @@ export default function Home() {
                                   </p>
                                   <div className="space-y-8 mb-16 pl-8">
                                     {section.features?.map((feature, idx) => (
-                                      <motion.div
+                                      <MotionDiv
                                         key={idx}
                                         initial={{ opacity: 0, x: -20 }}
                                         whileInView={{ opacity: 1, x: 0 }}
@@ -688,7 +688,7 @@ export default function Home() {
                                         <div className="ml-8 text-[#E4F5E5]/70 text-sm text-justify">
                                           {feature.description}
                                         </div>
-                                      </motion.div>
+                                      </MotionDiv>
                                     ))}
                                   </div>
 
@@ -710,7 +710,7 @@ export default function Home() {
                                         </video>
 
                                         <div className="custom-video-controls flex items-center gap-4">
-                                          <motion.button
+                                          <MotionButton
                                             className="video-button"
                                             onClick={() => {
                                               const video = videoRef.current;
@@ -726,9 +726,9 @@ export default function Home() {
                                             whileTap={{ scale: 0.95 }}
                                           >
                                             {isPlaying ? <FaPause size={16} /> : <FaPlay size={16} />}
-                                          </motion.button>
+                                          </MotionButton>
 
-                                          <motion.button
+                                          <MotionButton
                                             className="video-button"
                                             onClick={() => {
                                               const container = videoRef.current?.parentElement;
@@ -746,7 +746,7 @@ export default function Home() {
                                             whileTap={{ scale: 0.95 }}
                                           >
                                             {isFullscreen ? <FaCompress size={16} /> : <FaExpand size={16} />}
-                                          </motion.button>
+                                          </MotionButton>
                                         </div>
                                       </div>
                                     </div>
@@ -778,8 +778,8 @@ export default function Home() {
                                 </div>
                               ))}
                             </div>
-                          </motion.div>
-                        </motion.div>
+                          </MotionDiv>
+                        </MotionDiv>
                       );
                     }
                     return null;
@@ -788,7 +788,7 @@ export default function Home() {
 
                 {/* Section contact repositionnée */}
                 <section className="py-9 px-4 mt-20 relative">
-                  <motion.div
+                  <MotionDiv
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 1 }}
@@ -796,39 +796,39 @@ export default function Home() {
                   >
                     <h2 className="text-3xl font-[Area_Normal_ExtraBold] mb-8 text-[#E4F5E5]">Contact</h2>
                     <div className="flex justify-center space-x-8 text-[#E4F5E5]">
-                      <motion.a
+                      <MotionA
                         href="https://github.com/votre-github"
                         whileHover={{ scale: 1.2 }}
                         className="text-2xl"
                       >
                         <FaGithub />
-                      </motion.a>
-                      <motion.a
+                      </MotionA>
+                      <MotionA
                         href="https://www.linkedin.com/in/tanguy-clochard-a32b5a203/"
                         whileHover={{ scale: 1.2 }}
                         className="text-2xl"
                         target="_blank"
                       >
                         <FaLinkedin />
-                      </motion.a>
-                      <motion.a
+                      </MotionA>
+                      <MotionA
                         href="mailto:tanguyclochardmail@gmail.com"
                         whileHover={{ scale: 1.2 }}
                         className="text-2xl"
                       >
                         <FaEnvelope />
-                      </motion.a>
+                      </MotionA>
                     </div>
-                  </motion.div>
+                  </MotionDiv>
                 </section>
               </div>
             </div>
           )}
-        </motion.div>
+        </MotionDiv>
 
         {/* Ajoutez ce code pour le mode plein écran */}
         {fullscreenImage && (
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
@@ -850,7 +850,7 @@ export default function Home() {
                 quality={100}
               />
             </div>
-          </motion.div>
+          </MotionDiv>
         )}
       </div>
     </main>
